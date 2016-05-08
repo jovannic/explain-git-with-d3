@@ -482,6 +482,9 @@ define(['d3'], function () {
                 .attr('id', function (d) {
                     return view.name + '-' + d.id;
                 })
+                .attr('data-id', function(d) {
+                    return d.id;
+                })
                 .classed('commit', true)
                 .classed('merge-commit', function (d) {
                     return typeof d.parent2 === 'string';
@@ -698,6 +701,7 @@ define(['d3'], function () {
 
             newTags = existingTags.enter()
                 .append('g')
+                .attr("data-id", function (d) { return d.name; })
                 .attr('class', function (d) {
                     var classes = 'branch-tag';
                     if (d.name.indexOf('[') === 0 && d.name.indexOf(']') === d.name.length - 1) {

@@ -41,11 +41,14 @@ define(['historyview', 'controlbox', 'd3'], function (HistoryView, ControlBox, d
         controlBox.render(playground);
         historyView.render(playground);
 
-        openSandBoxes.push({
+        sandbox = {
             hv: historyView,
             cb: controlBox,
             container: container
-        });
+        };
+        
+        openSandBoxes.push(sandbox);
+        window.explainGit.sandbox = sandbox;
     };
 
     reset = function () {
